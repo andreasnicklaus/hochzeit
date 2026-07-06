@@ -1,0 +1,168 @@
+---
+const locationPhotos = [
+  {
+    src: '/images/location/schloss-filseck-hochzeit.jpg',
+    alt: 'Schloss Filseck – Innenhof mit Hochzeitsfeier',
+    span: 'md:col-span-2 md:row-span-1',
+    caption: 'Schloss Filseck Innenhof',
+  },
+  {
+    src: '/images/location/schloss-filseck-courtyard.jpg',
+    alt: 'Schloss Filseck – Arkadenhof',
+    span: '',
+    caption: 'Arkadenhof',
+  },
+  {
+    src: '/images/location/schloss-filseck-garden.jpg',
+    alt: 'Schloss Filseck – Schlossgarten',
+    span: '',
+    caption: 'Schlossgarten',
+  },
+];
+
+const coupleStyles = [
+  {
+    class: '',
+    text: 'Andreas & Anna-Lena',
+    subtext: 'Euer Bild kommt hier hin',
+  },
+  {
+    class: 'md:col-span-2',
+    text: 'Andreas & Anna-Lena',
+    subtext: 'Noch ein schönes Foto von euch',
+  },
+];
+---
+
+<section id="gallery" class="py-24 px-6 bg-paper">
+  <div class="max-w-2xl mx-auto text-center">
+    <p class="text-sm uppercase tracking-[0.3em] text-stone-400 mb-6 font-body font-light">
+      Impressionen
+    </p>
+    <h2 class="font-display text-3xl md:text-4xl font-semibold text-stone-800">
+      Bilder zur Location
+    </h2>
+    <p class="text-stone-500 font-body font-light mt-4 text-sm">
+      Fotos von euch beiden könnt ihr später in <code class="text-sage">/public/images/couple/</code> ablegen
+    </p>
+  </div>
+
+  <div class="max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[250px]">
+    {locationPhotos.map((photo) => (
+      <button
+        class="gallery-btn group relative overflow-hidden rounded-lg bg-stone-100 shadow-sm cursor-pointer {photo.span}"
+        data-src={photo.src}
+        data-alt={photo.alt}
+      >
+        <img
+          src={photo.src}
+          alt={photo.alt}
+          loading="lazy"
+          class="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300" />
+        <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <span class="text-white text-xs font-medium">{photo.caption}</span>
+        </div>
+      </button>
+    ))}
+
+    {coupleStyles.map((slot) => (
+      <div
+        class="relative overflow-hidden rounded-lg border-2 border-dashed border-beige bg-beige/20 flex flex-col items-center justify-center {slot.class}"
+      >
+        <svg class="w-10 h-10 text-beige mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <p class="font-display italic text-stone-400 text-lg">{slot.text}</p>
+        <p class="text-stone-300 text-xs mt-1 font-body">{slot.subtext}</p>
+      </div>
+    ))}
+  </div>
+
+  <p class="text-xs text-stone-400 mt-8 text-center font-body font-light max-w-xl mx-auto leading-relaxed">
+    Fotos: <a href="https://commons.wikimedia.org/wiki/User:Historiograf" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-600">Klaus Graf</a>
+    {' '}(CC0),{' '}
+    <a href="https://commons.wikimedia.org/wiki/User:Don-kun" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-600">Don-kun</a>
+    {' '}&{' '}
+    <a href="https://commons.wikimedia.org/wiki/User:Vernissagefan" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-600">Vernissagefan</a>
+    {' '}(CC BY-SA 4.0)
+  </p>
+</section>
+
+<!-- Lightbox -->
+<div
+  id="lightbox"
+  class="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+>
+  <button id="lightbox-close" class="absolute top-4 right-4 text-white/70 hover:text-white text-3xl leading-none cursor-pointer z-10">&times;</button>
+  <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-4xl leading-none cursor-pointer z-10 hidden">&lsaquo;</button>
+  <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-4xl leading-none cursor-pointer z-10 hidden">&rsaquo;</button>
+  <img id="lightbox-img" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl" src="" alt="" />
+</div>
+
+<script>
+  const images = document.querySelectorAll('.gallery-btn');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+
+  const imageData = Array.from(document.querySelectorAll('.gallery-btn')).map((btn) => ({
+    src: btn.dataset.src,
+    alt: btn.dataset.alt,
+  }));
+
+  let currentIdx = 0;
+
+  function openLightbox(index) {
+    currentIdx = index;
+    lightboxImg.src = imageData[index].src;
+    lightboxImg.alt = imageData[index].alt;
+    lightbox.classList.remove('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = 'hidden';
+    lightboxPrev.style.display = imageData.length > 1 ? 'block' : 'none';
+    lightboxNext.style.display = imageData.length > 1 ? 'block' : 'none';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = '';
+  }
+
+  function prevImage() {
+    if (imageData.length > 1) {
+      currentIdx = (currentIdx - 1 + imageData.length) % imageData.length;
+      lightboxImg.src = imageData[currentIdx].src;
+      lightboxImg.alt = imageData[currentIdx].alt;
+    }
+  }
+
+  function nextImage() {
+    if (imageData.length > 1) {
+      currentIdx = (currentIdx + 1) % imageData.length;
+      lightboxImg.src = imageData[currentIdx].src;
+      lightboxImg.alt = imageData[currentIdx].alt;
+    }
+  }
+
+  images.forEach((btn, i) => {
+    btn.addEventListener('click', () => openLightbox(i));
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  lightboxPrev.addEventListener('click', prevImage);
+  lightboxNext.addEventListener('click', nextImage);
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('opacity-0')) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'ArrowRight') nextImage();
+    }
+  });
+</script>
