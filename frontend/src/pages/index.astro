@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import Hero from '../components/Hero.astro';
+import LocationSection from '../components/LocationSection.astro';
+import ContactSection from '../components/ContactSection.astro';
 import RsvpModal from '../components/RsvpModal.astro';
 ---
 
@@ -9,7 +11,7 @@ import RsvpModal from '../components/RsvpModal.astro';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hochzeit</title>
+    <title>Andreas &amp; Anna-Lena | Hochzeit</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -17,6 +19,8 @@ import RsvpModal from '../components/RsvpModal.astro';
   <body class="min-h-screen bg-paper text-stone-800 font-body">
     <main>
       <Hero />
+      <LocationSection />
+      <ContactSection />
       <RsvpModal />
     </main>
   </body>
