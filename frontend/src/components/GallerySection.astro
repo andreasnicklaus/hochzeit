@@ -1,36 +1,12 @@
 ---
-const locationPhotos = [
-  {
-    src: '/images/location/schloss-filseck-hochzeit.jpg',
-    alt: 'Schloss Filseck – Innenhof mit Hochzeitsfeier',
-    span: 'md:col-span-2 md:row-span-1',
-    caption: 'Schloss Filseck Innenhof',
-  },
-  {
-    src: '/images/location/schloss-filseck-courtyard.jpg',
-    alt: 'Schloss Filseck – Arkadenhof',
-    span: '',
-    caption: 'Arkadenhof',
-  },
-  {
-    src: '/images/location/schloss-filseck-garden.jpg',
-    alt: 'Schloss Filseck – Schlossgarten',
-    span: '',
-    caption: 'Schlossgarten',
-  },
-];
-
-const coupleStyles = [
-  {
-    class: '',
-    text: 'Andreas & Anna-Lena',
-    subtext: 'Euer Bild kommt hier hin',
-  },
-  {
-    class: 'md:col-span-2',
-    text: 'Andreas & Anna-Lena',
-    subtext: 'Noch ein schönes Foto von euch',
-  },
+const photos = [
+  { src: '/images/location/schloss-filseck-panorama.jpg', alt: 'Schloss Filseck Panoramablick', span: 'md:col-span-2 md:row-span-2', caption: 'Panoramablick' },
+  { src: '/images/location/schloss-filseck-005.jpg', alt: 'Schloss Filseck Außenansicht', span: '', caption: 'Außenansicht' },
+  { src: '/images/location/schloss-filseck-exterior.jpg', alt: 'Schloss Filseck Frontansicht', span: '', caption: 'Frontansicht' },
+  { src: '/images/location/schloss-filseck-courtyard.jpg', alt: 'Schloss Filseck Arkadenhof', span: '', caption: 'Arkadenhof' },
+  { src: '/images/location/schloss-filseck-eingangstor.jpg', alt: 'Schloss Filseck Eingangstor', span: '', caption: 'Eingangstor' },
+  { src: '/images/location/schloss-filseck-hochzeit.jpg', alt: 'Schloss Filseck Innenhof mit Hochzeitsfeier', span: 'md:col-span-2', caption: 'Innenhof bei einer Hochzeit' },
+  { src: '/images/location/schloss-filseck-garden.jpg', alt: 'Schloss Filseck Schlossgarten', span: '', caption: 'Schlossgarten' },
 ];
 ---
 
@@ -42,13 +18,10 @@ const coupleStyles = [
     <h2 class="font-display text-3xl md:text-4xl font-semibold text-stone-800">
       Bilder zur Location
     </h2>
-    <p class="text-stone-500 font-body font-light mt-4 text-sm">
-      Fotos von euch beiden könnt ihr später in <code class="text-sage">/public/images/couple/</code> ablegen
-    </p>
   </div>
 
   <div class="max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[250px]">
-    {locationPhotos.map((photo) => (
+    {photos.map((photo) => (
       <button
         class="gallery-btn group relative overflow-hidden rounded-lg bg-stone-100 shadow-sm cursor-pointer {photo.span}"
         data-src={photo.src}
@@ -67,27 +40,22 @@ const coupleStyles = [
       </button>
     ))}
 
-    {coupleStyles.map((slot) => (
-      <div
-        class="relative overflow-hidden rounded-lg border-2 border-dashed border-beige bg-beige/20 flex flex-col items-center justify-center {slot.class}"
-      >
-        <svg class="w-10 h-10 text-beige mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        <p class="font-display italic text-stone-400 text-lg">{slot.text}</p>
-        <p class="text-stone-300 text-xs mt-1 font-body">{slot.subtext}</p>
-      </div>
-    ))}
-  </div>
+    <div class="relative overflow-hidden rounded-lg border-2 border-dashed border-beige bg-beige/20 flex flex-col items-center justify-center">
+      <svg class="w-10 h-10 text-beige mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+      <p class="font-display italic text-stone-400 text-lg">Andreas & Anna-Lena</p>
+      <p class="text-stone-300 text-xs mt-1 font-body">Euer Bild kommt hier hin</p>
+    </div>
 
-  <p class="text-xs text-stone-400 mt-8 text-center font-body font-light max-w-xl mx-auto leading-relaxed">
-    Fotos: <a href="https://commons.wikimedia.org/wiki/User:Historiograf" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-600">Klaus Graf</a>
-    {' '}(CC0),{' '}
-    <a href="https://commons.wikimedia.org/wiki/User:Don-kun" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-600">Don-kun</a>
-    {' '}&{' '}
-    <a href="https://commons.wikimedia.org/wiki/User:Vernissagefan" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-600">Vernissagefan</a>
-    {' '}(CC BY-SA 4.0)
-  </p>
+    <div class="relative overflow-hidden rounded-lg border-2 border-dashed border-beige bg-beige/20 flex flex-col items-center justify-center md:col-span-2">
+      <svg class="w-10 h-10 text-beige mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+      <p class="font-display italic text-stone-400 text-lg">Andreas & Anna-Lena</p>
+      <p class="text-stone-300 text-xs mt-1 font-body">Noch ein schönes Foto von euch</p>
+    </div>
+  </div>
 </section>
 
 <!-- Lightbox -->
