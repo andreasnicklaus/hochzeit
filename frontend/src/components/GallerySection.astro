@@ -1,60 +1,170 @@
 ---
 const photos = [
-  { src: '/images/location/schloss-filseck-panorama.jpg', alt: 'Schloss Filseck Panoramablick', span: 'md:col-span-2 md:row-span-2', caption: 'Panoramablick' },
-  { src: '/images/location/schloss-filseck-005.jpg', alt: 'Schloss Filseck Außenansicht', span: '', caption: 'Außenansicht' },
-  { src: '/images/location/schloss-filseck-exterior.jpg', alt: 'Schloss Filseck Frontansicht', span: '', caption: 'Frontansicht' },
-  { src: '/images/location/schloss-filseck-courtyard.jpg', alt: 'Schloss Filseck Arkadenhof', span: '', caption: 'Arkadenhof' },
-  { src: '/images/location/schloss-filseck-eingangstor.jpg', alt: 'Schloss Filseck Eingangstor', span: '', caption: 'Eingangstor' },
-  { src: '/images/location/schloss-filseck-hochzeit.jpg', alt: 'Schloss Filseck Innenhof mit Hochzeitsfeier', span: 'md:col-span-2', caption: 'Innenhof bei einer Hochzeit' },
-  { src: '/images/location/schloss-filseck-garden.jpg', alt: 'Schloss Filseck Schlossgarten', span: '', caption: 'Schlossgarten' },
+  {
+    src: "/images/location/hochzeit-portal-10.jpg",
+    alt: "Schloss Filseck Innenraum",
+    span: "",
+    caption: "Außenansicht",
+  },
+  {
+    src: "/images/location/schloss-filseck-panorama.jpg",
+    alt: "Schloss Filseck Panoramablick",
+    span: "",
+    caption: "Panoramablick",
+  },
+  {
+    src: "/images/location/schloss-filseck-005.jpg",
+    alt: "Schloss Filseck Außenansicht",
+    span: "",
+    caption: "Innenhof",
+  },
+  {
+    src: "/images/location/schloss-filseck-exterior.jpg",
+    alt: "Schloss Filseck Frontansicht",
+    span: "",
+    caption: "Frontansicht",
+  },
+  {
+    src: "/images/couple/couple_sundown.jpeg",
+    alt: "Andreas & Anna-Lena",
+    span: "md:col-span-2 md:row-span-2",
+    caption: "Andreas & Anna-Lena",
+  },
+  {
+    src: "/images/location/hochzeit-portal-01.jpg",
+    alt: "Schloss Filseck Innenraum",
+    span: "",
+    caption: "Räumlichkeiten 1",
+  },
+  {
+    src: "/images/location/hochzeit-portal-02.jpg",
+    alt: "Schloss Filseck Innenraum",
+    span: "",
+    caption: "Räumlichkeiten 2",
+  },
+  {
+    src: "/images/location/hochzeit-portal-03.jpg",
+    alt: "Schloss Filseck Innenraum",
+    span: "md:col-span-2",
+    caption: "Räumlichkeiten 3",
+  },
+  {
+    src: "/images/location/hochzeit-portal-04.jpg",
+    alt: "Schloss Filseck Innenraum",
+    span: "",
+    caption: "Räumlichkeiten 4",
+  },
+  {
+    src: "/images/location/hochzeit-portal-05.jpg",
+    alt: "Schloss Filseck Innenraum",
+    span: "",
+    caption: "Räumlichkeiten 5",
+  },
+  {
+    src: "/images/location/hochzeit-portal-06.jpg",
+    alt: "Schloss Filseck Außenbereich",
+    span: "",
+    caption: "Außenbereich",
+  },
+  {
+    src: "/images/location/hochzeit-portal-07.jpg",
+    alt: "Schloss Filseck Dekoration",
+    span: "",
+    caption: "Dekoration",
+  },
+  {
+    src: "/images/location/hochzeit-portal-08.jpg",
+    alt: "Schloss Filseck Innenraum",
+    span: "",
+    caption: "Räumlichkeiten 6",
+  },
+  {
+    src: "/images/location/hochzeit-portal-09.jpg",
+    alt: "Schloss Filseck Außenbereich",
+    span: "md:col-span-2",
+    caption: "Außenbereich 2",
+  },
+  {
+    src: "/images/location/hochzeit-portal-11.jpg",
+    alt: "Innenhof",
+    span: "",
+    caption: "Innenhof 2",
+  },
+  {
+    src: "/images/location/schloss-filseck-courtyard.jpg",
+    alt: "Schloss Filseck Arkadenhof",
+    span: "",
+    caption: "Arkadenhof",
+  },
+  {
+    src: "/images/location/schloss-filseck-eingangstor.jpg",
+    alt: "Schloss Filseck Eingangstor",
+    span: "",
+    caption: "Eingangstor",
+  },
+  {
+    src: "/images/location/schloss-filseck-hochzeit.jpg",
+    alt: "Schloss Filseck Innenhof mit Hochzeitsfeier",
+    span: "",
+    caption: "Innenhof bei einer Hochzeit",
+  },
+
+  {
+    src: "/images/location/schloss-filseck-garden.jpg",
+    alt: "Schloss Filseck Schlossgarten",
+    span: "",
+    caption: "Schlossgarten",
+  },
+  {
+    src: "/images/couple/couple_artsy.jpeg",
+    alt: "Andreas & Anna-Lena",
+    span: "md:col-span-2",
+    caption: "Andreas & Anna-Lena",
+  },
+  {
+    src: "/images/location/hochzeit-portal-12.jpg",
+    alt: "Schloss Filseck Außenansicht",
+    span: "",
+    caption: "Außenansicht 2",
+  },
 ];
 ---
 
 <section id="gallery" class="py-24 px-6 bg-paper">
   <div class="max-w-2xl mx-auto text-center">
-    <p class="text-sm uppercase tracking-[0.3em] text-stone-400 mb-6 font-body font-light">
+    <p
+      class="text-sm uppercase tracking-[0.3em] text-stone-400 mb-6 font-body font-light"
+    >
       Impressionen
     </p>
     <h2 class="font-display text-3xl md:text-4xl font-semibold text-stone-800">
-      Bilder zur Location
+      Impressionen
     </h2>
   </div>
 
-  <div class="max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[250px]">
-    {photos.map((photo) => (
-      <button
-        class="gallery-btn group relative overflow-hidden rounded-lg bg-stone-100 shadow-sm cursor-pointer {photo.span}"
-        data-src={photo.src}
-        data-alt={photo.alt}
-      >
-        <img
-          src={photo.src}
-          alt={photo.alt}
-          loading="lazy"
-          class="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300" />
-        <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span class="text-white text-xs font-medium">{photo.caption}</span>
-        </div>
-      </button>
-    ))}
-
-    <div class="relative overflow-hidden rounded-lg border-2 border-dashed border-beige bg-beige/20 flex flex-col items-center justify-center">
-      <svg class="w-10 h-10 text-beige mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      </svg>
-      <p class="font-display italic text-stone-400 text-lg">Andreas & Anna-Lena</p>
-      <p class="text-stone-300 text-xs mt-1 font-body">Euer Bild kommt hier hin</p>
-    </div>
-
-    <div class="relative overflow-hidden rounded-lg border-2 border-dashed border-beige bg-beige/20 flex flex-col items-center justify-center md:col-span-2">
-      <svg class="w-10 h-10 text-beige mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      </svg>
-      <p class="font-display italic text-stone-400 text-lg">Andreas & Anna-Lena</p>
-      <p class="text-stone-300 text-xs mt-1 font-body">Noch ein schönes Foto von euch</p>
-    </div>
+  <div
+    class="max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[250px]"
+  >
+    {
+      photos.map((photo) => (
+        <button
+          class="gallery-btn group relative overflow-hidden rounded-lg bg-stone-100 shadow-sm cursor-pointer {photo.span}"
+          data-src={photo.src}
+          data-alt={photo.alt}
+        >
+          <img
+            src={photo.src}
+            alt={photo.alt}
+            loading="lazy"
+            class="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300" />
+          <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span class="text-white text-xs font-medium">{photo.caption}</span>
+          </div>
+        </button>
+      ))
+    }
   </div>
 </section>
 
@@ -63,24 +173,43 @@ const photos = [
   id="lightbox"
   class="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
 >
-  <button id="lightbox-close" class="absolute top-4 right-4 text-white/70 hover:text-white text-3xl leading-none cursor-pointer z-10">&times;</button>
-  <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-4xl leading-none cursor-pointer z-10 hidden">&lsaquo;</button>
-  <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-4xl leading-none cursor-pointer z-10 hidden">&rsaquo;</button>
-  <img id="lightbox-img" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl" src="" alt="" />
+  <button
+    id="lightbox-close"
+    class="absolute top-4 right-4 text-white/70 hover:text-white text-3xl leading-none cursor-pointer z-10"
+    >&times;</button
+  >
+  <button
+    id="lightbox-prev"
+    class="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-4xl leading-none cursor-pointer z-10 hidden"
+    >&lsaquo;</button
+  >
+  <button
+    id="lightbox-next"
+    class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-4xl leading-none cursor-pointer z-10 hidden"
+    >&rsaquo;</button
+  >
+  <img
+    id="lightbox-img"
+    class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+    src=""
+    alt=""
+  />
 </div>
 
 <script>
-  const images = document.querySelectorAll('.gallery-btn');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxClose = document.getElementById('lightbox-close');
-  const lightboxPrev = document.getElementById('lightbox-prev');
-  const lightboxNext = document.getElementById('lightbox-next');
+  const images = document.querySelectorAll(".gallery-btn");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const lightboxClose = document.getElementById("lightbox-close");
+  const lightboxPrev = document.getElementById("lightbox-prev");
+  const lightboxNext = document.getElementById("lightbox-next");
 
-  const imageData = Array.from(document.querySelectorAll('.gallery-btn')).map((btn) => ({
-    src: btn.dataset.src,
-    alt: btn.dataset.alt,
-  }));
+  const imageData = Array.from(document.querySelectorAll(".gallery-btn")).map(
+    (btn) => ({
+      src: btn.dataset.src,
+      alt: btn.dataset.alt,
+    }),
+  );
 
   let currentIdx = 0;
 
@@ -88,15 +217,15 @@ const photos = [
     currentIdx = index;
     lightboxImg.src = imageData[index].src;
     lightboxImg.alt = imageData[index].alt;
-    lightbox.classList.remove('opacity-0', 'pointer-events-none');
-    document.body.style.overflow = 'hidden';
-    lightboxPrev.style.display = imageData.length > 1 ? 'block' : 'none';
-    lightboxNext.style.display = imageData.length > 1 ? 'block' : 'none';
+    lightbox.classList.remove("opacity-0", "pointer-events-none");
+    document.body.style.overflow = "hidden";
+    lightboxPrev.style.display = imageData.length > 1 ? "block" : "none";
+    lightboxNext.style.display = imageData.length > 1 ? "block" : "none";
   }
 
   function closeLightbox() {
-    lightbox.classList.add('opacity-0', 'pointer-events-none');
-    document.body.style.overflow = '';
+    lightbox.classList.add("opacity-0", "pointer-events-none");
+    document.body.style.overflow = "";
   }
 
   function prevImage() {
@@ -116,21 +245,21 @@ const photos = [
   }
 
   images.forEach((btn, i) => {
-    btn.addEventListener('click', () => openLightbox(i));
+    btn.addEventListener("click", () => openLightbox(i));
   });
 
-  lightboxClose.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', (e) => {
+  lightboxClose.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox) closeLightbox();
   });
-  lightboxPrev.addEventListener('click', prevImage);
-  lightboxNext.addEventListener('click', nextImage);
+  lightboxPrev.addEventListener("click", prevImage);
+  lightboxNext.addEventListener("click", nextImage);
 
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('opacity-0')) {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') prevImage();
-      if (e.key === 'ArrowRight') nextImage();
+  document.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("opacity-0")) {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "ArrowRight") nextImage();
     }
   });
 </script>
