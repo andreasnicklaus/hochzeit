@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSVP Dashboard</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, system-ui, sans-serif; background: #f5f3f0; color: #1c1917; padding: 2rem; }
+    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .stats { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .stat { background: #fff; border-radius: 8px; padding: 1rem 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); flex: 1; min-width: 120px; }
+    .stat-value { font-size: 2rem; font-weight: 700; }
+    .stat-label { font-size: 0.85rem; color: #666; margin-top: 0.25rem; }
+    table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #e5e2dd; font-size: 0.9rem; }
+    th { background: #faf8f5; font-weight: 600; }
+    .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.8rem; font-weight: 500; }
+    .badge-yes { background: #d1fae5; color: #065f46; }
+    .badge-no { background: #fee2e2; color: #991b1b; }
+    .guests-list { font-size: 0.85rem; color: #555; }
+    .guests-list li { margin-bottom: 0.2rem; }
+    .empty { text-align: center; color: #999; padding: 3rem; }
+    .timestamp { font-size: 0.8rem; color: #999; }
+  </style>
+</head>
+<body>
+  <h1>RSVP Dashboard</h1>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value"><%= total %></div>
+      <div class="stat-label">Antworten gesamt</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value"><%= coming %></div>
+      <div class="stat-label">Zusagen</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value"><%= notComing %></div>
+      <div class="stat-label">Absagen</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value"><%= totalGuests %></div>
+      <div class="stat-label">Gäste gesamt</div>
+    </div>
+  </div>
+
+  <% if (rsvps.length === 0) { %>
+    <div class="empty">Noch keine RSVPs eingegangen.</div>
+  <% } else { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Teilnahme</th>
+          <th>Essen</th>
+          <th>Weitere Gäste</th>
+          <th>Nachricht</th>
+          <th>Eingegangen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% rsvps.forEach(r => { %>
+          <tr>
+            <td><strong><%= r.name %></strong></td>
+            <td><span class="badge badge-<%= r.attending ? 'yes' : 'no' %>"><%= r.attending_label %></span></td>
+            <td><%= r.food_preference || '—' %></td>
+            <td>
+              <% if (r.additional_guests && r.additional_guests.length > 0) { %>
+                <ul class="guests-list">
+                  <% r.additional_guests.forEach(g => { %>
+                    <li><%= g.name %><%= g.food_preference ? ' — ' + g.food_preference : '' %></li>
+                  <% }) %>
+                </ul>
+              <% } else { %>
+                —
+              <% } %>
+            </td>
+            <td><%= r.message || '—' %></td>
+            <td class="timestamp"><%= new Date(r.created_at).toLocaleString('de-DE') %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+</body>
+</html>
