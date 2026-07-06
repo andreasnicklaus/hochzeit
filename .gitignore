@@ -137,7 +137,8 @@ dist
 !.yarn/sdks
 !.yarn/versions
 
-# Vite files
+# Vite / Astro files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+.astro/

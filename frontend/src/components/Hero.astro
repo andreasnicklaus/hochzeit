@@ -1,0 +1,54 @@
+---
+const names = ['Vorname', 'Nachname'];
+const date = '01. August 2026';
+const location = 'Ort der Hochzeit';
+---
+
+<section
+  id="hero"
+  class="relative min-h-screen flex flex-col items-center justify-center px-6 text-center"
+>
+  <div class="max-w-xl">
+    <p class="text-sm uppercase tracking-[0.3em] text-stone-400 mb-6 font-body font-light">
+      Wir heiraten
+    </p>
+
+    <h1 class="font-display text-5xl md:text-7xl leading-tight font-semibold text-stone-800">
+      {names[0]}<br />&<br />{names[1]}
+    </h1>
+
+    <div class="w-12 h-px bg-terracotta mx-auto my-8" />
+
+    <p class="text-lg md:text-xl font-display italic text-stone-500">
+      {date}
+    </p>
+
+    <p class="text-sm text-stone-400 mt-1 font-body font-light">
+      {location}
+    </p>
+
+    <p class="mt-10 text-stone-500 font-body font-light leading-relaxed max-w-md mx-auto">
+      Wir freuen uns, diesen Tag mit euch zu feiern.<br />
+      Bitte gebt uns bis zum <span class="font-medium text-stone-700">15. Juli</span> Bescheid,
+      ob ihr dabei seid.
+    </p>
+
+    <button
+      id="rsvp-button"
+      class="mt-10 bg-terracotta hover:bg-terracotta/90 text-white px-10 py-3.5 rounded-full text-sm font-medium tracking-wide transition-all duration-300 shadow-sm hover:shadow-md"
+    >
+      Jetzt antworten
+    </button>
+  </div>
+
+  <footer class="absolute bottom-8 text-xs text-stone-400 font-body font-light">
+    &copy; {new Date().getFullYear()} &mdash; {names[0]} &amp; {names[1]}
+  </footer>
+</section>
+
+<script>
+  document.getElementById('rsvp-button')?.addEventListener('click', () => {
+    const event = new CustomEvent('open-rsvp');
+    document.dispatchEvent(event);
+  });
+</script>

@@ -1,0 +1,284 @@
+<div
+  id="rsvp-overlay"
+  class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-black/40"
+>
+  <div
+    class="bg-white rounded-2xl shadow-xl w-full max-w-lg max-h-[90vh] flex flex-col animate-in"
+  >
+    <div class="flex items-center justify-between px-6 py-5 border-b border-beige shrink-0">
+      <h2 class="font-display text-2xl text-stone-800">Deine Antwort</h2>
+      <button
+        id="rsvp-close"
+        type="button"
+        class="w-8 h-8 flex items-center justify-center rounded-full text-stone-400 hover:text-stone-600 hover:bg-stone-100 transition-colors text-xl leading-none"
+        aria-label="Schließen"
+      >
+        &times;
+      </button>
+    </div>
+
+    <form id="rsvp-form" class="p-6 space-y-5 overflow-y-auto">
+      <div>
+        <label for="rsvp-name" class="block text-sm font-medium text-stone-700 mb-1.5">
+          Dein Name <span class="text-terracotta">*</span>
+        </label>
+        <input
+          id="rsvp-name"
+          type="text"
+          required
+          class="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-800 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:border-terracotta transition-colors"
+          placeholder="Vor- und Nachname"
+        />
+      </div>
+
+      <fieldset class="space-y-2">
+        <legend class="text-sm font-medium text-stone-700 mb-1.5">
+          Teilnahme <span class="text-terracotta">*</span>
+        </legend>
+        <label
+          class="flex items-center gap-3 rounded-lg border border-stone-200 px-4 py-3 cursor-pointer hover:bg-stone-50 transition-colors has-[:checked]:border-terracotta has-[:checked]:bg-terracotta/5"
+        >
+          <input type="radio" name="attending" value="yes" class="accent-terracotta w-4 h-4" />
+          <span class="text-sm text-stone-700">Ja, ich komme</span>
+        </label>
+        <label
+          class="flex items-center gap-3 rounded-lg border border-stone-200 px-4 py-3 cursor-pointer hover:bg-stone-50 transition-colors has-[:checked]:border-stone-400 has-[:checked]:bg-stone-50"
+        >
+          <input type="radio" name="attending" value="no" class="accent-stone-500 w-4 h-4" />
+          <span class="text-sm text-stone-700">Nein, ich kann leider nicht kommen</span>
+        </label>
+      </fieldset>
+
+      <div id="rsvp-yes-section" class="hidden space-y-4">
+        <div>
+          <label for="rsvp-food" class="block text-sm font-medium text-stone-700 mb-1.5">
+            Essenswunsch
+          </label>
+          <input
+            id="rsvp-food"
+            type="text"
+            class="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-800 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:border-terracotta transition-colors"
+            placeholder="z.B. vegetarisch, vegan, keine Besonderheiten"
+          />
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-medium text-stone-700">Weitere Gäste</span>
+          </div>
+          <div id="rsvp-guests-container" class="space-y-3"></div>
+          <button
+            id="rsvp-add-guest"
+            type="button"
+            class="text-sm text-terracotta hover:text-terracotta/80 font-medium transition-colors"
+          >
+            + Weiteren Gast hinzufügen
+          </button>
+        </div>
+      </div>
+
+      <div id="rsvp-no-section" class="hidden">
+        <label for="rsvp-message" class="block text-sm font-medium text-stone-700 mb-1.5">
+          Nachricht (optional)
+        </label>
+        <textarea
+          id="rsvp-message"
+          rows="3"
+          class="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-800 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:border-terracotta transition-colors resize-none"
+          placeholder="Eine Nachricht an das Brautpaar ..."
+        ></textarea>
+      </div>
+
+      <button
+        id="rsvp-submit"
+        type="submit"
+        class="w-full bg-terracotta hover:bg-terracotta/90 text-white rounded-full py-3 text-sm font-medium tracking-wide transition-all duration-300 shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Absenden
+      </button>
+
+      <p id="rsvp-error" class="hidden text-sm text-red-600 text-center"></p>
+    </form>
+  </div>
+</div>
+
+<div
+  id="rsvp-toast"
+  class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-stone-800 text-white px-6 py-3 rounded-full text-sm shadow-lg"
+></div>
+
+<script>
+  (() => {
+    const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:3000';
+    const OVERLAY = document.getElementById('rsvp-overlay');
+    const FORM = document.getElementById('rsvp-form');
+    const CLOSE = document.getElementById('rsvp-close');
+    const NAME = document.getElementById('rsvp-name');
+    const ATTENDING_YES = document.querySelector('input[name="attending"][value="yes"]');
+    const ATTENDING_NO = document.querySelector('input[name="attending"][value="no"]');
+    const YES_SECTION = document.getElementById('rsvp-yes-section');
+    const NO_SECTION = document.getElementById('rsvp-no-section');
+    const FOOD = document.getElementById('rsvp-food');
+    const GUESTS_CONTAINER = document.getElementById('rsvp-guests-container');
+    const ADD_GUEST = document.getElementById('rsvp-add-guest');
+    const MESSAGE = document.getElementById('rsvp-message');
+    const SUBMIT = document.getElementById('rsvp-submit');
+    const ERROR = document.getElementById('rsvp-error');
+    const TOAST = document.getElementById('rsvp-toast');
+
+    let guestCount = 0;
+
+    function openModal() {
+      OVERLAY.classList.remove('hidden');
+      OVERLAY.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      OVERLAY.classList.add('hidden');
+      OVERLAY.classList.remove('flex');
+      document.body.style.overflow = '';
+      FORM.reset();
+      YES_SECTION.classList.add('hidden');
+      NO_SECTION.classList.add('hidden');
+      GUESTS_CONTAINER.innerHTML = '';
+      guestCount = 0;
+      ERROR.classList.add('hidden');
+    }
+
+    function showToast(msg) {
+      TOAST.textContent = msg;
+      TOAST.classList.remove('hidden');
+      setTimeout(() => TOAST.classList.add('hidden'), 4000);
+    }
+
+    function handleAttendingChange() {
+      if (ATTENDING_YES.checked) {
+        YES_SECTION.classList.remove('hidden');
+        NO_SECTION.classList.add('hidden');
+      } else if (ATTENDING_NO.checked) {
+        YES_SECTION.classList.add('hidden');
+        NO_SECTION.classList.remove('hidden');
+      } else {
+        YES_SECTION.classList.add('hidden');
+        NO_SECTION.classList.add('hidden');
+      }
+    }
+
+    function createGuestEntry() {
+      const idx = guestCount++;
+      const div = document.createElement('div');
+      div.className = 'rounded-lg border border-stone-200 bg-stone-50 p-4 space-y-3';
+      div.dataset.index = idx;
+
+      div.innerHTML = `
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-stone-500">Gast ${idx + 1}</span>
+          <button type="button" class="remove-guest text-xs text-red-500 hover:text-red-600 transition-colors">Entfernen</button>
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-stone-600 mb-1">Name</label>
+          <input type="text" class="guest-name w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:border-terracotta" placeholder="Vor- und Nachname" required />
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-stone-600 mb-1">Essenswunsch</label>
+          <input type="text" class="guest-food w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:border-terracotta" placeholder="z.B. vegetarisch, vegan" />
+        </div>
+      `;
+
+      div.querySelector('.remove-guest')?.addEventListener('click', () => {
+        div.remove();
+      });
+
+      return div;
+    }
+
+    ADD_GUEST?.addEventListener('click', () => {
+      GUESTS_CONTAINER.appendChild(createGuestEntry());
+    });
+
+    [ATTENDING_YES, ATTENDING_NO].forEach(r => {
+      r?.addEventListener('change', handleAttendingChange);
+    });
+
+    CLOSE?.addEventListener('click', closeModal);
+
+    OVERLAY?.addEventListener('click', (e) => {
+      if (e.target === OVERLAY) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !OVERLAY.classList.contains('hidden')) closeModal();
+    });
+
+    document.addEventListener('open-rsvp', openModal);
+
+    FORM?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      ERROR.classList.add('hidden');
+
+      const name = NAME.value.trim();
+      if (!name) {
+        showError('Bitte gib deinen Namen ein.');
+        return;
+      }
+
+      const attending = ATTENDING_YES.checked;
+
+      if (!attending && !ATTENDING_NO.checked) {
+        showError('Bitte wähle aus, ob du kommst.');
+        return;
+      }
+
+      const body = {
+        name,
+        attending,
+        food_preference: attending ? FOOD.value.trim() : '',
+        additional_guests: [],
+        message: !attending ? MESSAGE.value.trim() : '',
+      };
+
+      if (attending) {
+        const guestEntries = GUESTS_CONTAINER.querySelectorAll('[data-index]');
+        guestEntries.forEach(el => {
+          const gName = el.querySelector('.guest-name')?.value?.trim();
+          if (gName) {
+            body.additional_guests.push({
+              name: gName,
+              food_preference: el.querySelector('.guest-food')?.value?.trim() || '',
+            });
+          }
+        });
+      }
+
+      SUBMIT.disabled = true;
+      SUBMIT.textContent = 'Wird gesendet ...';
+
+      try {
+        const res = await fetch(`${API_URL}/api/rsvp`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(data.error || 'Fehler beim Senden.');
+        }
+
+        closeModal();
+        showToast('Danke für deine Antwort!');
+      } catch (err) {
+        showError(err.message || 'Verbindungsfehler. Bitte versuche es erneut.');
+      } finally {
+        SUBMIT.disabled = false;
+        SUBMIT.textContent = 'Absenden';
+      }
+    });
+
+    function showError(msg) {
+      ERROR.textContent = msg;
+      ERROR.classList.remove('hidden');
+    }
+  })();
+</script>
