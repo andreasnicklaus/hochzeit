@@ -39,7 +39,7 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          PUBLIC_API_URL: ${{ vars.API_URL || 'https://api.hochzeit.andreasnicklaus.de' }}
+          PUBLIC_API_URL: ${{ vars.API_URL || 'https://api.nicklaushochzeit.de' }}
 
       - uses: actions/upload-pages-artifact@v5
         with:
