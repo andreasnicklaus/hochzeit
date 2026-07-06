@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY_IMAGE: ${{ vars.DOCKER_IMAGE || 'docker.io/andreasnicklaus/hochzeit-backend' }}
+  REGISTRY_IMAGE: ${{ vars.DOCKER_IMAGE || 'docker.io/anicklaus/hochzeit-backend' }}
 
 jobs:
   build:
