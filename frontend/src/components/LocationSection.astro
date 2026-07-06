@@ -1,11 +1,14 @@
 ---
-const mapSrc = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10533.002825183969!2d9.59374043134149!3d48.70068890485277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799a3132ff8980b%3A0xc57037672354b355!2sSchloss%20Filseck%2C%20Filseck%201%2C%2073066%20Uhingen!5e0!3m2!1sen!2sde!4v1783349089034!5m2!1sen!2sd';
-const mapLink = 'https://maps.app.goo.gl/cA4yNGs6zuMJAzM97';
+const mapSrc =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10533.002825183969!2d9.59374043134149!3d48.70068890485277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799a3132ff8980b%3A0xc57037672354b355!2sSchloss%20Filseck%2C%20Filseck%201%2C%2073066%20Uhingen!5e0!3m2!1sen!2sde!4v1783349089034!5m2!1sen!2sd";
+const mapLink = "https://maps.app.goo.gl/cA4yNGs6zuMJAzM97";
 ---
 
 <section id="location" class="py-24 px-6 bg-white">
   <div class="max-w-2xl mx-auto text-center">
-    <p class="text-sm uppercase tracking-[0.3em] text-stone-400 mb-6 font-body font-light">
+    <p
+      class="text-sm uppercase tracking-[0.3em] text-stone-400 mb-6 font-body font-light"
+    >
       Die Location
     </p>
 
@@ -13,13 +16,13 @@ const mapLink = 'https://maps.app.goo.gl/cA4yNGs6zuMJAzM97';
       Schloss Filseck
     </h2>
 
-    <p class="text-stone-500 font-body font-light mt-2">
-      Uhingen
-    </p>
+    <p class="text-stone-500 font-body font-light mt-2">Uhingen</p>
 
     <p class="text-stone-500 font-body font-light mt-6 leading-relaxed">
-      Die Trauung findet am <span class="font-medium text-stone-700">12. Juni 2027 um 15:30 Uhr</span>
-      auf Schloss Filseck statt. Im Anschluss feiern wir gemeinsam weiter.
+      Die Trauung startet am <span class="font-medium text-stone-700"
+        >12. Juni 2027 um 15:30 Uhr</span
+      >
+      auf Schloss Filseck. Im Anschluss feiern wir gemeinsam weiter.
     </p>
 
     <a
@@ -41,8 +44,7 @@ const mapLink = 'https://maps.app.goo.gl/cA4yNGs6zuMJAzM97';
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         title="Schloss Filseck"
-        class="absolute inset-0 w-full h-full rounded-lg shadow-md"
-      ></iframe>
+        class="absolute inset-0 w-full h-full rounded-lg shadow-md"></iframe>
     </div>
     <a
       href={mapLink}

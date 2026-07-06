@@ -16,7 +16,7 @@ const photos = [
     src: "/images/location/schloss-filseck-005.jpg",
     alt: "Schloss Filseck Außenansicht",
     span: "",
-    caption: "Innenhof",
+    caption: "Arkadenhof",
   },
   {
     src: "/images/location/schloss-filseck-exterior.jpg",
@@ -27,99 +27,50 @@ const photos = [
   {
     src: "/images/couple/couple_sundown.jpeg",
     alt: "Andreas & Anna-Lena",
-    span: "md:col-span-2 md:row-span-2",
+    span: "",
     caption: "Andreas & Anna-Lena",
   },
   {
     src: "/images/location/hochzeit-portal-01.jpg",
     alt: "Schloss Filseck Innenraum",
     span: "",
-    caption: "Räumlichkeiten 1",
-  },
-  {
-    src: "/images/location/hochzeit-portal-02.jpg",
-    alt: "Schloss Filseck Innenraum",
-    span: "",
-    caption: "Räumlichkeiten 2",
+    caption: "Restaurant",
   },
   {
     src: "/images/location/hochzeit-portal-03.jpg",
     alt: "Schloss Filseck Innenraum",
-    span: "md:col-span-2",
-    caption: "Räumlichkeiten 3",
+    span: "",
+    caption: "Restaurant 2",
   },
   {
-    src: "/images/location/hochzeit-portal-04.jpg",
-    alt: "Schloss Filseck Innenraum",
+    src: "/images/couple/couple_artsy.jpeg",
+    alt: "Andreas & Anna-Lena",
     span: "",
-    caption: "Räumlichkeiten 4",
-  },
-  {
-    src: "/images/location/hochzeit-portal-05.jpg",
-    alt: "Schloss Filseck Innenraum",
-    span: "",
-    caption: "Räumlichkeiten 5",
-  },
-  {
-    src: "/images/location/hochzeit-portal-06.jpg",
-    alt: "Schloss Filseck Außenbereich",
-    span: "",
-    caption: "Außenbereich",
-  },
-  {
-    src: "/images/location/hochzeit-portal-07.jpg",
-    alt: "Schloss Filseck Dekoration",
-    span: "",
-    caption: "Dekoration",
-  },
-  {
-    src: "/images/location/hochzeit-portal-08.jpg",
-    alt: "Schloss Filseck Innenraum",
-    span: "",
-    caption: "Räumlichkeiten 6",
+    caption: "Andreas & Anna-Lena",
   },
   {
     src: "/images/location/hochzeit-portal-09.jpg",
     alt: "Schloss Filseck Außenbereich",
-    span: "md:col-span-2",
-    caption: "Außenbereich 2",
+    span: "",
+    caption: "Arkadenhof 2",
   },
   {
     src: "/images/location/hochzeit-portal-11.jpg",
     alt: "Innenhof",
     span: "",
-    caption: "Innenhof 2",
+    caption: "Arkadenhof 3",
   },
   {
     src: "/images/location/schloss-filseck-courtyard.jpg",
     alt: "Schloss Filseck Arkadenhof",
     span: "",
-    caption: "Arkadenhof",
+    caption: "Arkadenhof 4",
   },
-  {
-    src: "/images/location/schloss-filseck-eingangstor.jpg",
-    alt: "Schloss Filseck Eingangstor",
-    span: "",
-    caption: "Eingangstor",
-  },
-  {
-    src: "/images/location/schloss-filseck-hochzeit.jpg",
-    alt: "Schloss Filseck Innenhof mit Hochzeitsfeier",
-    span: "",
-    caption: "Innenhof bei einer Hochzeit",
-  },
-
   {
     src: "/images/location/schloss-filseck-garden.jpg",
     alt: "Schloss Filseck Schlossgarten",
     span: "",
     caption: "Schlossgarten",
-  },
-  {
-    src: "/images/couple/couple_artsy.jpeg",
-    alt: "Andreas & Anna-Lena",
-    span: "md:col-span-2",
-    caption: "Andreas & Anna-Lena",
   },
   {
     src: "/images/location/hochzeit-portal-12.jpg",
@@ -135,7 +86,7 @@ const photos = [
     <p
       class="text-sm uppercase tracking-[0.3em] text-stone-400 mb-6 font-body font-light"
     >
-      Impressionen
+      Galerie
     </p>
     <h2 class="font-display text-3xl md:text-4xl font-semibold text-stone-800">
       Impressionen
@@ -195,6 +146,12 @@ const photos = [
     alt=""
   />
 </div>
+
+<style>
+  .gallery-btn:last-child {
+    grid-column: 2;
+  }
+</style>
 
 <script>
   const images = document.querySelectorAll(".gallery-btn");
