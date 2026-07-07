@@ -1,87 +1,37 @@
 ---
+import { Image } from "astro:assets";
+import img01 from "../assets/images/location/hochzeit-portal-10.jpg";
+import img02 from "../assets/images/location/schloss-filseck-panorama.jpg";
+import img03 from "../assets/images/location/schloss-filseck-005.jpg";
+import img04 from "../assets/images/location/schloss-filseck-exterior.jpg";
+import img05 from "../assets/images/couple/couple_sundown.jpeg";
+import img06 from "../assets/images/location/hochzeit-portal-01.jpg";
+import img07 from "../assets/images/location/hochzeit-portal-03.jpg";
+import img08 from "../assets/images/couple/couple_artsy.jpeg";
+import img09 from "../assets/images/location/hochzeit-portal-09.jpg";
+import img10 from "../assets/images/location/hochzeit-portal-11.jpg";
+import img11 from "../assets/images/location/schloss-filseck-courtyard.jpg";
+import img12 from "../assets/images/location/schloss-filseck-garden.jpg";
+import img13 from "../assets/images/location/hochzeit-portal-12.jpg";
+
 const photos = [
-  {
-    src: "/images/location/hochzeit-portal-10.jpg",
-    alt: "Schloss Filseck Innenraum",
-    span: "",
-    caption: "Außenansicht",
-  },
-  {
-    src: "/images/location/schloss-filseck-panorama.jpg",
-    alt: "Schloss Filseck Panoramablick",
-    span: "",
-    caption: "Panoramablick",
-  },
-  {
-    src: "/images/location/schloss-filseck-005.jpg",
-    alt: "Schloss Filseck Außenansicht",
-    span: "",
-    caption: "Arkadenhof",
-  },
-  {
-    src: "/images/location/schloss-filseck-exterior.jpg",
-    alt: "Schloss Filseck Frontansicht",
-    span: "",
-    caption: "Frontansicht",
-  },
-  {
-    src: "/images/couple/couple_sundown.jpeg",
-    alt: "Andreas & Anna-Lena",
-    span: "",
-    caption: "Andreas & Anna-Lena",
-  },
-  {
-    src: "/images/location/hochzeit-portal-01.jpg",
-    alt: "Schloss Filseck Innenraum",
-    span: "",
-    caption: "Restaurant",
-  },
-  {
-    src: "/images/location/hochzeit-portal-03.jpg",
-    alt: "Schloss Filseck Innenraum",
-    span: "",
-    caption: "Restaurant 2",
-  },
-  {
-    src: "/images/couple/couple_artsy.jpeg",
-    alt: "Andreas & Anna-Lena",
-    span: "",
-    caption: "Andreas & Anna-Lena",
-  },
-  {
-    src: "/images/location/hochzeit-portal-09.jpg",
-    alt: "Schloss Filseck Außenbereich",
-    span: "",
-    caption: "Arkadenhof 2",
-  },
-  {
-    src: "/images/location/hochzeit-portal-11.jpg",
-    alt: "Innenhof",
-    span: "",
-    caption: "Arkadenhof 3",
-  },
-  {
-    src: "/images/location/schloss-filseck-courtyard.jpg",
-    alt: "Schloss Filseck Arkadenhof",
-    span: "",
-    caption: "Arkadenhof 4",
-  },
-  {
-    src: "/images/location/schloss-filseck-garden.jpg",
-    alt: "Schloss Filseck Schlossgarten",
-    span: "",
-    caption: "Schlossgarten",
-  },
-  {
-    src: "/images/location/hochzeit-portal-12.jpg",
-    alt: "Schloss Filseck Außenansicht",
-    span: "",
-    caption: "Außenansicht 2",
-  },
+  { src: img01, alt: "Schloss Filseck Innenraum", span: "", caption: "Außenansicht" },
+  { src: img02, alt: "Schloss Filseck Panoramablick", span: "", caption: "Panoramablick" },
+  { src: img03, alt: "Schloss Filseck Außenansicht", span: "", caption: "Arkadenhof" },
+  { src: img04, alt: "Schloss Filseck Frontansicht", span: "", caption: "Frontansicht" },
+  { src: img05, alt: "Andreas & Anna-Lena", span: "", caption: "Andreas & Anna-Lena" },
+  { src: img06, alt: "Schloss Filseck Innenraum", span: "", caption: "Restaurant" },
+  { src: img07, alt: "Schloss Filseck Innenraum", span: "", caption: "Restaurant 2" },
+  { src: img08, alt: "Andreas & Anna-Lena", span: "", caption: "Andreas & Anna-Lena" },
+  { src: img09, alt: "Schloss Filseck Außenbereich", span: "", caption: "Arkadenhof 2" },
+  { src: img10, alt: "Innenhof", span: "", caption: "Arkadenhof 3" },
+  { src: img11, alt: "Schloss Filseck Arkadenhof", span: "", caption: "Arkadenhof 4" },
+  { src: img12, alt: "Schloss Filseck Schlossgarten", span: "", caption: "Schlossgarten" },
+  { src: img13, alt: "Schloss Filseck Außenansicht", span: "", caption: "Außenansicht 2" },
 ];
 ---
 
-<section id="gallery" class="py-24 px-6 bg-paper">
+<section id="gallery" class="py-24 px-6 bg-white">
   <div class="max-w-2xl mx-auto text-center">
     <p
       class="text-sm uppercase tracking-[0.3em] text-stone-400 mb-6 font-body font-light"
@@ -100,10 +50,10 @@ const photos = [
       photos.map((photo) => (
         <button
           class="gallery-btn group relative overflow-hidden rounded-lg bg-stone-100 shadow-sm cursor-pointer {photo.span}"
-          data-src={photo.src}
+          data-src={photo.src.src}
           data-alt={photo.alt}
         >
-          <img
+          <Image
             src={photo.src}
             alt={photo.alt}
             loading="lazy"
