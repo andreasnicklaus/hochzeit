@@ -99,6 +99,19 @@
 
       <p id="rsvp-error" class="hidden text-sm text-red-600 text-center"></p>
     </form>
+
+    <div id="rsvp-success" class="hidden p-6 text-center">
+      <div class="w-16 h-16 bg-sage/10 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+        </svg>
+      </div>
+      <h3 class="font-display text-2xl text-stone-800 mb-2">Danke für deine Antwort!</h3>
+      <p id="rsvp-success-msg" class="text-stone-500 text-sm font-body font-light"></p>
+      <button id="rsvp-success-close" type="button" class="mt-6 bg-terracotta hover:bg-terracotta/90 text-white px-8 py-2.5 rounded-full text-sm font-medium tracking-wide transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer">
+        Schließen
+      </button>
+    </div>
   </div>
 </div>
 
@@ -112,6 +125,7 @@
     const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:3000';
     const OVERLAY = document.getElementById('rsvp-overlay');
     const FORM = document.getElementById('rsvp-form');
+    const SUCCESS = document.getElementById('rsvp-success');
     const CLOSE = document.getElementById('rsvp-close');
     const NAME = document.getElementById('rsvp-name');
     const ATTENDING_YES = document.querySelector('input[name="attending"][value="yes"]');
@@ -138,6 +152,8 @@
       OVERLAY.classList.add('hidden');
       OVERLAY.classList.remove('flex');
       document.body.style.overflow = '';
+      FORM.classList.remove('hidden');
+      SUCCESS.classList.add('hidden');
       FORM.reset();
       YES_SECTION.classList.add('hidden');
       NO_SECTION.classList.add('hidden');
@@ -200,6 +216,8 @@
     [ATTENDING_YES, ATTENDING_NO].forEach(r => {
       r?.addEventListener('change', handleAttendingChange);
     });
+
+    document.getElementById('rsvp-success-close')?.addEventListener('click', closeModal);
 
     CLOSE?.addEventListener('click', closeModal);
 
@@ -266,8 +284,14 @@
           throw new Error(data.error || 'Fehler beim Senden.');
         }
 
-        closeModal();
-        showToast('Danke für deine Antwort!');
+        document.getElementById('rsvp-success-msg').textContent = attending
+          ? 'Wir freuen uns auf den Tag mit dir!'
+          : 'Schade, dass du nicht dabei sein kannst.';
+        FORM.classList.add('hidden');
+        SUCCESS.classList.remove('hidden');
+        TOAST.textContent = 'Danke für deine Antwort!';
+        TOAST.classList.remove('hidden');
+        setTimeout(() => TOAST.classList.add('hidden'), 4000);
       } catch (err) {
         showError(err.message || 'Verbindungsfehler. Bitte versuche es erneut.');
       } finally {

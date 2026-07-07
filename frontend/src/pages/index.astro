@@ -2,18 +2,21 @@
 import '../styles/global.css';
 import Hero from '../components/Hero.astro';
 import LocationSection from '../components/LocationSection.astro';
+import TimelineSection from '../components/TimelineSection.astro';
 import GallerySection from '../components/GallerySection.astro';
 import ContactSection from '../components/ContactSection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import AccomodationSection from '../components/AccomodationSection.astro';
 import GiftsSection from '../components/GiftsSection.astro';
 import RsvpModal from '../components/RsvpModal.astro';
 ---
 
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Andreas &amp; Anna-Lena | Hochzeit</title>
+    <title>Anna-Lena &amp; Andreas | Hochzeit</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,10 +26,33 @@ import RsvpModal from '../components/RsvpModal.astro';
     <main>
       <Hero />
       <LocationSection />
+      <TimelineSection />
       <GallerySection />
       <ContactSection />
+      <FaqSection />
+      <AccomodationSection />
       <GiftsSection />
       <RsvpModal />
     </main>
   </body>
 </html>
+
+<script>
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' },
+    );
+
+    document.querySelectorAll('[data-animate]').forEach((el) => observer.observe(el));
+  } else {
+    document.querySelectorAll('[data-animate]').forEach((el) => el.classList.add('visible'));
+  }
+</script>
