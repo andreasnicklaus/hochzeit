@@ -16,7 +16,7 @@ services:
       POSTGRES_PASSWORD: hochzeit
       POSTGRES_DB: hochzeit
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - ./pgdata:/var/lib/postgresql/data
       - ./migrations/001_create_rsvps.sql:/docker-entrypoint-initdb.d/001_create_rsvps.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U hochzeit"]
@@ -25,5 +25,3 @@ services:
       retries: 5
     restart: unless-stopped
 
-volumes:
-  pgdata:
