@@ -12,10 +12,11 @@ router.get('/', basicAuth, async (req, res) => {
       attending_label: r.attending ? 'Ja' : 'Nein',
     }));
 
-    const total = rsvps.length;
-    const coming = rsvps.filter(r => r.attending).length;
+    const activeRsvps = rsvps.filter(r => !r.ignored);
+    const total = activeRsvps.length;
+    const coming = activeRsvps.filter(r => r.attending).length;
     const notComing = total - coming;
-    const totalGuests = rsvps.reduce((sum, r) => {
+    const totalGuests = activeRsvps.reduce((sum, r) => {
       if (!r.attending) return sum;
       const additional = (r.additional_guests || []).length;
       return sum + 1 + additional;

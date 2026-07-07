@@ -60,4 +60,21 @@ router.delete('/:id', basicAuth, async (req, res) => {
   }
 });
 
+router.patch('/:id', basicAuth, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { ignored } = req.body;
+
+    if (typeof ignored !== 'boolean') {
+      return res.status(400).json({ error: 'ignored muss ein Boolean sein.' });
+    }
+
+    await pool.query('UPDATE rsvps SET ignored = $1 WHERE id = $2', [ignored, id]);
+    res.json({ success: true });
+  } catch (err) {
+    console.error('Update RSVP error:', err);
+    res.status(500).json({ error: 'Fehler beim Aktualisieren.' });
+  }
+});
+
 export default router;
