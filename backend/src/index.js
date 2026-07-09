@@ -21,6 +21,8 @@ app.set('views', 'views');
 app.use('/api/rsvp', rsvpRoutes);
 app.use('/admin', adminRoutes);
 
+app.get('/', (_req, res) => res.redirect('/admin'));
+
 app.get('/health', (_req, res) => res.json({ status: 'ok' }));
 
 app.listen(PORT, () => {
