@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: "Sind Kinder willkommen?",
-    a: "Wenn sie auf der Einladung stehen, sind sie herzlich willkommen. Bitte gebt sie beim RSVP mit an. Es wird keine eigene Unterhaltung fur die Kinder geben, aber direkt neben der Location gibt es einen Spielplatz und der Schloßgarten ist eingezäunt und gut fur Kinder geeignet.",
+    a: "Wenn sie auf der Einladung stehen, sind sie herzlich willkommen. Bitte gebt sie beim RSVP mit an. Es wird keine eigene Unterhaltung für die Kinder geben, aber direkt neben der Location gibt es einen Spielplatz und der Schloßgarten ist eingezäunt und gut fur Kinder geeignet.",
   },
   {
     q: "Darf ich während der Trauung fotografieren?",
@@ -42,22 +42,33 @@ const faqs = [
 <section class="py-24 px-6 bg-white" id="faq">
   <div class="max-w-2xl mx-auto">
     <div class="text-center" data-animate="fade-up">
-      <p class="text-sm uppercase tracking-[0.3em] text-stone-400 mb-6 font-body font-light">
+      <p
+        class="text-sm uppercase tracking-[0.3em] text-stone-400 mb-6 font-body font-light"
+      >
         Info
       </p>
-      <h2 class="font-display text-3xl md:text-4xl font-semibold text-stone-800">
+      <h2
+        class="font-display text-3xl md:text-4xl font-semibold text-stone-800"
+      >
         Wichtige Fragen
       </h2>
     </div>
 
-    <div class="mt-6 rounded-xl border border-[#E8DED1] bg-paper p-6 sm:p-8 text-center" data-animate="fade-up">
-      <p class="text-xs uppercase tracking-[0.2em] text-sage font-medium mb-2">Dresscode</p>
+    <div
+      class="mt-6 rounded-xl border border-[#E8DED1] bg-paper p-6 sm:p-8 text-center"
+      data-animate="fade-up"
+    >
+      <p class="text-xs uppercase tracking-[0.2em] text-sage font-medium mb-2">
+        Dresscode
+      </p>
       <p class="font-display text-xl text-stone-800 font-semibold">
         Sommerliche Festkleidung
       </p>
-      <p class="text-stone-500 font-body font-light mt-2 text-sm leading-relaxed max-w-md mx-auto">
-        Tragt gerne Farben und leichte Stoffe! Es ist Juni und wir feiern drinnen wie draußen -<br />
-        eher Sommerparty als steife Hochzeit.
+      <p
+        class="text-stone-500 font-body font-light mt-2 text-sm leading-relaxed max-w-md mx-auto"
+      >
+        Tragt gerne Farben und leichte Stoffe! Es ist Juni und wir feiern
+        drinnen wie draußen.
       </p>
     </div>
 
@@ -74,10 +85,17 @@ const faqs = [
                 stroke="currentColor"
                 stroke-width="2"
               >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </summary>
-            <div class="px-5 pb-4 text-sm text-stone-500 font-body font-light leading-relaxed" set:html={faq.a}></div>
+            <div
+              class="px-5 pb-4 text-sm text-stone-500 font-body font-light leading-relaxed"
+              set:html={faq.a}
+            />
           </details>
         ))
       }

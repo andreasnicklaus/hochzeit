@@ -15,19 +15,79 @@ import img12 from "../assets/images/location/schloss-filseck-garden.jpg";
 import img13 from "../assets/images/location/hochzeit-portal-12.jpg";
 
 const photos = [
-  { src: img01, alt: "Schloss Filseck Innenraum", span: "", caption: "Außenansicht" },
-  { src: img02, alt: "Schloss Filseck Panoramablick", span: "", caption: "Panoramablick" },
-  { src: img03, alt: "Schloss Filseck Außenansicht", span: "", caption: "Arkadenhof" },
-  { src: img04, alt: "Schloss Filseck Frontansicht", span: "", caption: "Frontansicht" },
-  { src: img05, alt: "Andreas & Anna-Lena", span: "", caption: "Andreas & Anna-Lena" },
-  { src: img06, alt: "Schloss Filseck Innenraum", span: "", caption: "Restaurant" },
-  { src: img07, alt: "Schloss Filseck Innenraum", span: "", caption: "Restaurant 2" },
-  { src: img08, alt: "Andreas & Anna-Lena", span: "", caption: "Andreas & Anna-Lena" },
-  { src: img09, alt: "Schloss Filseck Außenbereich", span: "", caption: "Arkadenhof 2" },
-  { src: img10, alt: "Innenhof", span: "", caption: "Arkadenhof 3" },
-  { src: img11, alt: "Schloss Filseck Arkadenhof", span: "", caption: "Arkadenhof 4" },
-  { src: img12, alt: "Schloss Filseck Schlossgarten", span: "", caption: "Schlossgarten" },
-  { src: img13, alt: "Schloss Filseck Außenansicht", span: "", caption: "Außenansicht 2" },
+  {
+    src: img01,
+    alt: "Schloss Filseck Innenraum",
+    span: "",
+    caption: "Außenansicht",
+  },
+  {
+    src: img02,
+    alt: "Schloss Filseck Panoramablick",
+    span: "",
+    caption: "Panoramablick",
+  },
+  {
+    src: img03,
+    alt: "Schloss Filseck Außenansicht",
+    span: "",
+    caption: "Schlosshof",
+  },
+  {
+    src: img04,
+    alt: "Schloss Filseck Frontansicht",
+    span: "",
+    caption: "Frontansicht",
+  },
+  {
+    src: img05,
+    alt: "Andreas & Anna-Lena",
+    span: "",
+    caption: "Andreas & Anna-Lena",
+  },
+  {
+    src: img06,
+    alt: "Schloss Filseck Innenraum",
+    span: "",
+    caption: "Restaurant",
+  },
+  {
+    src: img07,
+    alt: "Schloss Filseck Innenraum",
+    span: "",
+    caption: "Restaurant 2",
+  },
+  {
+    src: img08,
+    alt: "Andreas & Anna-Lena",
+    span: "",
+    caption: "Andreas & Anna-Lena",
+  },
+  {
+    src: img09,
+    alt: "Schloss Filseck Außenbereich",
+    span: "",
+    caption: "Schlosshof 2",
+  },
+  { src: img10, alt: "Innenhof", span: "", caption: "Schlosshof 3" },
+  {
+    src: img11,
+    alt: "Schloss Filseck Schlosshof",
+    span: "",
+    caption: "Schlosshof 4",
+  },
+  {
+    src: img12,
+    alt: "Schloss Filseck Schlossgarten",
+    span: "",
+    caption: "Schlossgarten",
+  },
+  {
+    src: img13,
+    alt: "Schloss Filseck Außenansicht",
+    span: "",
+    caption: "Außenansicht 2",
+  },
 ];
 ---
 
@@ -98,8 +158,10 @@ const photos = [
 </div>
 
 <style>
-  .gallery-btn:last-child {
-    grid-column: 2;
+  @media (min-width: 768px) {
+    .gallery-btn:last-child {
+      grid-column: 2;
+    }
   }
 </style>
 

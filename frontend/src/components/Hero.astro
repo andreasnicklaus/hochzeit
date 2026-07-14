@@ -58,19 +58,21 @@ const location = "Schloss Filseck, Uhingen";
   </div>
 
   <div class="relative z-10 flex justify-center pb-8">
-    <a href="#location" aria-label="Nach unten scrollen">
-      <div class="animate-bounce">
+    <a href="#location" aria-label="Nach unten scrollen" class="group">
+      <div
+        class="animate-bounce flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-stone-600 shadow-lg ring-1 ring-white/60 transition-transform duration-300 group-hover:scale-105"
+      >
         <svg
-          class="w-6 h-6 text-white/70 drop-shadow"
+          class="w-5 h-5"
           fill="none"
           stroke="currentColor"
+          stroke-width="2"
           viewBox="0 0 24 24"
         >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            stroke-width="2"
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            d="M12 5v14m0 0l-7-7m7 7l7-7"></path>
         </svg>
       </div>
     </a>
