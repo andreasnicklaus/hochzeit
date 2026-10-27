@@ -4,9 +4,13 @@ on:
   push:
     branches: [main]
     paths:
-      - 'backend/**'
-      - '.github/workflows/publish-backend.yml'
-  workflow_dispatch:
+      - "backend/**"
+      - ".github/workflows/publish-backend.yml"
+  pull_request:
+    paths:
+      - "backend/**"
+      - ".github/workflows/publish-backend.yml"
+  merge_group:
 
 env:
   REGISTRY_IMAGE: ${{ vars.DOCKER_IMAGE || 'docker.io/anicklaus/hochzeit-backend' }}
@@ -39,7 +43,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: backend
-          push: true
+          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha

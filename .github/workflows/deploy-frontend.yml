@@ -4,9 +4,13 @@ on:
   push:
     branches: [main]
     paths:
-      - 'frontend/**'
-      - '.github/workflows/deploy-frontend.yml'
-  workflow_dispatch:
+      - "frontend/**"
+      - ".github/workflows/deploy-frontend.yml"
+  pull_request:
+    paths:
+      - "frontend/**"
+      - ".github/workflows/deploy-frontend.yml"
+  merge_group:
 
 permissions:
   contents: read
@@ -41,9 +45,12 @@ jobs:
         env:
           PUBLIC_API_URL: ${{ vars.API_URL || 'https://api.nicklaushochzeit.de' }}
 
-      - uses: actions/upload-pages-artifact@v5
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v5
         with:
           path: frontend/dist
 
-      - id: deployment
+      - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        id: deployment
         uses: actions/deploy-pages@v5
