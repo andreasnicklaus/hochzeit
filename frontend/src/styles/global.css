@@ -1,6 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: Inter, system-ui, sans-serif;
+  --color-paper: #FAF8F5;
+  --color-terracotta: #B46A5A;
+  --color-sage: #8B9D77;
+  --color-beige: #E8DED1;
+}
 
 @layer base {
   body {
@@ -28,7 +35,9 @@
   .animate-fade-up {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
   }
 
   .animate-fade-up.visible {
