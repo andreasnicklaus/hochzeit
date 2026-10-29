@@ -1,8 +1,10 @@
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: 'https://www.nicklaushochzeit.de',
-  base: '/',
-  integrations: [tailwind()],
+  site: "https://www.nicklaushochzeit.de",
+  base: "/",
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
